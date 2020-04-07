@@ -45,8 +45,7 @@ function renderItem(item) {
             <Col span={8}>
                 <List.Item
                     style={{ borderBottom: '1px solid', borderColor: '#e2dedc' }}
-                    actions={[
-                        <IconText icon={StarOutlined} text={item.vote} key="list-vertical-star-o" />,
+                    actions={[,
                         <IconText icon={LikeOutlined} text={item.like} key="list-vertical-like-o" />,
                         // <IconText icon={MessageOutlined} text="2" key="list-vertical-message" />,
                     ]}

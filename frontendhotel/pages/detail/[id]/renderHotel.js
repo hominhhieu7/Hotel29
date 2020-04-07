@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import PropTypes from 'prop-types'
-import { Row, Col, Button, message } from 'antd';
+import { Row, Col, Button, message, Rate, Space } from 'antd';
 import { LikeOutlined, StarOutlined } from '@ant-design/icons';
 import apiServices from '../../../services/apiServices';
 import { API } from '../../../services/apiResource';
+import { UserContext } from '../../../Context/StoreContext';
 
 
 
@@ -11,8 +12,9 @@ import { API } from '../../../services/apiResource';
 function RenderHotel(props) {
     const { hotel } = props;
     const [loading, setLoading] = useState(false);
-    const [disabled, setDisabled] = useState(false)
-   async function bookingButton() {
+    const [disabled, setDisabled] = useState(false);
+    const { user } = useContext(UserContext);
+    async function bookingButton() {
         setLoading(true);
         const changeStatus = {
             id: hotel.id,
@@ -33,14 +35,16 @@ function RenderHotel(props) {
                     <img src={hotel.image}></img>
                 </Col>
                 <Col span={8} offset={3} >
-                    <h1> {hotel.name} </h1>
-                    <h2>Price: {hotel.price}$</h2>
-                    <h2>Adress: {hotel.address}</h2>
-                    <h3><StarOutlined />{hotel.vote}</h3>
-                    <h3><LikeOutlined />{hotel.like}</h3>
-                    {hotel.status ? <span>Hotel has booked by someone</span> : <Button type="primary" disabled={disabled} onClick={bookingButton} loading={loading}>
+                    <Space size="middle" direction="vertical">
+                        <h1> {hotel.name} </h1>
+                        <h2>Price: {hotel.price}$ per day</h2>
+                        <h2>Adress: {hotel.streetAdress}, {hotel.stateAdress}, {hotel.countryAdress}</h2>
+                        <h3><LikeOutlined />{hotel.like}</h3>
+                        <Rate disabled defaultValue={hotel.star} />
+                        {hotel.status ? <span>Hotel has booked by someone</span> : <Button type="primary" disabled={disabled} onClick={bookingButton} loading={loading}>
                             Book
                     </Button>}
+                    </Space>
                 </Col>
             </Row>
         </div>

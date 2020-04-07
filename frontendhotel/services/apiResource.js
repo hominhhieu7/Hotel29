@@ -4,5 +4,8 @@ export const API = {
     },
     COMMENTS:{
         get: 'comments/'
+    },
+    USERS: {
+        get: 'users/'
     }
 }
