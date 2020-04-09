@@ -2,7 +2,6 @@ import apiService from '../services/apiServices'
 import { API } from '../services/apiResource'
 import Layout from '../components/Layout'
 import Link from 'next/link'
-import 'antd/dist/antd.css';
 import { List, Row, Col, message } from 'antd';
 import React, { useState, useEffect } from 'react'
 import { MessageOutlined, LikeOutlined, StarOutlined } from '@ant-design/icons';

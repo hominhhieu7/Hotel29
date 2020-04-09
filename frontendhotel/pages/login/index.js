@@ -26,7 +26,6 @@ export default function Login() {
             const dataUser = data.find(user => user.email === values.email && user.password === values.password);
             if (dataUser) {
                 setUser({ id: dataUser.id, name: dataUser.name });
-                setLoading(false);
                 message.success("Login success", 1);
                 Router.push('/');
             }

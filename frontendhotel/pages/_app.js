@@ -1,6 +1,7 @@
 
 import Router from 'next/router'
 import Head from 'next/head'
+import 'antd/dist/antd.css';
 import NProgress from 'nprogress'
 import { UserContext } from '../Context/StoreContext'
 import { useState, useMemo } from 'react'
