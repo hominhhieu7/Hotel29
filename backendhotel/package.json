@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "nodemon -r dotenv/config --exec babel-node src/index.js",
+    "dev": "nodemon -r dotenv/config --exec babel-node src/index.js",
     "start": "node --exec babel-node  src/index.js"
   },
   "author": "Hieu",
@@ -15,12 +15,14 @@
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "md5": "^2.2.1",
     "mongoose": "^5.9.7",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/preset-env": "^7.9.5",
     "nodemon": "^2.0.3"
   }
