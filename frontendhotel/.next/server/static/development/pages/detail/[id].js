@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 5);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2920,7 +2920,7 @@ class apiService {
 
 /***/ }),
 
-/***/ 4:
+/***/ 5:
 /*!******************************************!*\
   !*** multi ./pages/detail/[id]/index.js ***!
   \******************************************/

@@ -21,7 +21,6 @@ function RenderHotel(props) {
             status: true
         }
         const data = await apiServices.put(API.HOTELS.getAll + `${hotel.id}`, changeStatus);
-        console.log(data);
         if (data.status) {
             setLoading(false);
             message.success("Booking success", 1);

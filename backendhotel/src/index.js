@@ -6,7 +6,9 @@ import { BootServer } from './bootServer'
 
 
 
-connect(process.env.DATABASECONNECT, { useNewUrlParser: true, useUnifiedTopology: true })
+connect(process.env.DATABASECONNECT, {
+    useNewUrlParser: true, useUnifiedTopology: true
+})
     .then(async () => {
         console.log("Connected database");
         const bootServer = new BootServer();

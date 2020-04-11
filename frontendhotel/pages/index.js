@@ -77,7 +77,7 @@ function renderItem(item) {
 export async function getStaticProps() {
     try {
         const data = await apiService.get(API.HOTELS.getAll);
-        const hotels = data.filter(hotels => hotels.status === false)
+        const hotels = await data.filter(hotels => hotels.status === false)
         return {
             props: {
                 hotels: hotels
