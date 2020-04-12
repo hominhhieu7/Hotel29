@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const baseUrl = \"https://5e86cca6781e48001676b3a4.mockapi.io/\";","map":{"version":3,"sources":["F:/LearnWork/frontendhotel/common/baseUrl.js"],"names":["baseUrl"],"mappings":"AAAA,OAAO,MAAMA,OAAO,GAAG,8CAAhB","sourcesContent":["export const baseUrl = \"https://5e86cca6781e48001676b3a4.mockapi.io/\""]},"metadata":{},"sourceType":"module"}

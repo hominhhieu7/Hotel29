@@ -3,6 +3,8 @@ import cookieParser from 'cookie-parser';
 import mainRouter from './routes/mainrouter';
 import express from 'express';
 import { json, urlencoded } from 'body-parser';
+import { Shared } from './common/shared';
+import { HttpError } from 'http-errors'
 
 const normalizePort = (val) => {
     var port = parseInt(val, 10);
@@ -30,6 +32,11 @@ export class BootServer {
         this.app.use(cookieParser());
         this.app.use(logger('dev'));
         this.app.use('/api', mainRouter);
+        this.app.use((req, res, next) => {
+            const err = new Error("NOT FOUND");
+            next(err);
+        })
+        this.app.use(this.handleError);
     }
     configHeader = (req, res, next) => {
         //Website you wish to allow to connect
@@ -49,26 +56,28 @@ export class BootServer {
         // Pass to next layer of middleware
         next();
     }
-    // handleError = (err, req, res, next) => {
-    //     let errConfig = Shared.createError();
-    //     if (err instanceof HttpError) {
-    //         errConfig = err
-    //     } else {
-    //         if (err instanceof Error) {
-    //             if (err.name === 'EntityMetadataNotFound' || err.name === 'ECONNREFUSED') {
-    //                 err.message = 'NOT FOUND CONNECT DATABASE';
-    //             } else {
-    //                 errConfig.message = err.message;
-    //                 errConfig.statusCode = 500
-    //             }
-    //         } else {
-    //             if (typeof (err) === 'string') {
-    //                 errConfig.message = err
-    //                 errConfig.statusCode = 404
-    //             }
-    //         }
-    //     }
-    //     console.log('==========');
-    //     console.log(errConfig);
-    // }
+    handleError = (err, req, res, next) => {
+        let errConfig = Shared.createError();
+        if (err instanceof HttpError) {
+            errConfig = err;
+            res.statusCode = errConfig.statusCode;
+            res.send({ message: err.message });
+        } else {
+            if (err instanceof Error) {
+                errConfig.message = err.message;
+                errConfig.statusCode = 500;
+                res.statusCode = errConfig.statusCode;
+                res.send({ message: err.message });
+            } else {
+                if (typeof (err) === 'string') {
+                    errConfig.message = err;
+                    errConfig.statusCode = 404;
+                    res.statusCode = errConfig.statusCode;
+                    res.send({ message: err.message });
+                }
+            }
+        }
+        console.log('==========');
+        console.log(errConfig);
+    }
 }

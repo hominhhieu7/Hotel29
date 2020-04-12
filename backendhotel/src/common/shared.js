@@ -1,5 +1,10 @@
+import createHttpErrors from 'http-errors';
 
-
-export function errorHandle(req, res, next){
-    
+export class Shared {
+    static createError = (message = 'NOT FOUND', statusCode = 404) => {
+        const err = createHttpErrors();
+        err.message = message.toUpperCase();
+        err.statusCode = statusCode;
+        return err
+    }
 }

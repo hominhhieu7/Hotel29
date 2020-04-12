@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const API = {\n  HOTELS: {\n    getAll: 'hotels/'\n  },\n  COMMENTS: {\n    get: 'comments/'\n  },\n  USERS: {\n    get: 'users/'\n  }\n};","map":null,"metadata":{},"sourceType":"module"}

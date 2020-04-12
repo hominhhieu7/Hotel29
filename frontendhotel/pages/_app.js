@@ -10,10 +10,11 @@ import { useState, useMemo } from 'react'
 Router.events.on('routeChangeStart', url => {
   NProgress.start()
 })
-Router.events.on('routeChangeComplete', () => NProgress.done())
-Router.events.on('routeChangeError', () => NProgress.done())
-function MyApp({ Component, pageProps }) {
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
+
+function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState({});
   return (
     <>

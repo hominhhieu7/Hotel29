@@ -13,7 +13,6 @@ function RenderHotel(props) {
     const { hotel } = props;
     const [loading, setLoading] = useState(false);
     const [disabled, setDisabled] = useState(false);
-    const { user } = useContext(UserContext);
     async function bookingButton() {
         setLoading(true);
         const changeStatus = {
