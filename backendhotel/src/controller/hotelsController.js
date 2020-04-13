@@ -11,7 +11,6 @@ export async function createHotel(req, res, next) {
                 dataHotel,
             })
         } else {
-            res.status(404);
             throw Error("Data_Return_Empty")
         }
     } catch (error) {
@@ -28,7 +27,6 @@ export async function getHotels(req, res, next) {
             res.json(dataHotels);
         }
         else {
-            res.status(404);
             throw Error("Data_Return_Empty")
         }
     } catch (error) {
@@ -42,16 +40,19 @@ export async function getOneHotel(req, res, next) {
         const dataHotel = await Hotels.findById(req.params.id);
         if (dataHotel) {
             if (req.method === 'PUT') {
-                res.status(204);
                 const updateHotel = await Hotels.update(dataHotel, req.body);
-                res.json(updateHotel);
+                res.json({ updateHotel, success: "true" });
+                res.status(204);
+            } else if (req.method === 'DELETE') {
+                const deleteHotel = await Hotels.deleteOne(dataHotel);
+                res.json({ deleteHotel, success: "true" });
+                res.status(204);
             } else {
                 res.status(200);
                 res.json(dataHotel);
             }
         }
         else {
-            res.status(404);
             throw Error("Data_Return_Empty")
         }
     } catch (error) {

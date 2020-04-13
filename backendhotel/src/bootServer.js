@@ -61,19 +61,19 @@ export class BootServer {
         if (err instanceof HttpError) {
             errConfig = err;
             res.statusCode = errConfig.statusCode;
-            res.send({ message: err.message });
+            res.json({ message: err.message });
         } else {
             if (err instanceof Error) {
                 errConfig.message = err.message;
                 errConfig.statusCode = 500;
                 res.statusCode = errConfig.statusCode;
-                res.send({ message: err.message });
+                res.json({ message: errConfig.message })
             } else {
                 if (typeof (err) === 'string') {
                     errConfig.message = err;
                     errConfig.statusCode = 404;
                     res.statusCode = errConfig.statusCode;
-                    res.send({ message: err.message });
+                    res.json({ message: errConfig.message });
                 }
             }
         }
