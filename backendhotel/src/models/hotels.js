@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 
-
 const HotelsSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -48,8 +47,7 @@ const HotelsSchema = new mongoose.Schema({
     status:{
         type: Boolean,
         required: true
-    },
-    
+    }
 },
     {
         timestamps: true

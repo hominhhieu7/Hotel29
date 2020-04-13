@@ -28,7 +28,10 @@ export async function createUser(req, res, next) {
                 res.status(201);
                 res.json({
                     success: true,
-                    createData
+                    data: {
+                        name: createData.name,
+                        email: createData.email
+                    }
                 });
             } else {
                 throw Error("Data_Return_Empty");
@@ -43,13 +46,12 @@ export async function login(req, res, next) {
     try {
         const user = await Users.findOne({ email: req.body.email, password: md5(req.body.password) });
         if (user) {
-            const token = authenticate.signToken({ name: user.name, email: user.email, admin: user.admin });
-            await Users.update(user,{token: token});
+            const token = authenticate.signToken({ name: user.name, email: user.email });
+            await Users.updateOne(user, { token: token });
             res.cookie('auth_hotel29', token);
             res.json({
                 message: "You are login",
                 success: true,
-                token
             });
         } else {
             throw Error("Data_Return_Empty");
