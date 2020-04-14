@@ -1,12 +1,15 @@
 {
   "name": "backendhotel",
+  "engines": {
+    "node": "12.15.0"
+  },
   "version": "1.0.0",
   "description": "backend app expressjs mongodb and nodejs",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r dotenv/config --exec babel-node src/index.js",
-    "start": "node --exec babel-node  src/index.js"
+    "start": "babel-node -r dotenv/config  src/index.js"
   },
   "author": "Hieu",
   "license": "ISC",

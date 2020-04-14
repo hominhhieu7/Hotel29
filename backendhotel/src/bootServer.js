@@ -31,6 +31,7 @@ export class BootServer {
         this.app.use(urlencoded({ extended: false }));
         this.app.use(cookieParser());
         this.app.use(logger('dev'));
+        this.app.get('/favicon.ico', (req, res) => res.status(204));
         this.app.use('/api', mainRouter);
         this.app.use((req, res, next) => {
             const err = new Error("NOT FOUND");

@@ -17,7 +17,7 @@ router.post('/signup', createUser);
 router.post('/login', login);
 
 router.post('/comments');
-router.get('/users', getUsers);
+// router.get('/users', getUsers);
 
 
 
